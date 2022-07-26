@@ -1,5 +1,9 @@
 package com.mmpcoder.vendasapi.model.repository;
 
-public class ProdutoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mmpcoder.vendasapi.model.Produto;
+
+public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 
 }
