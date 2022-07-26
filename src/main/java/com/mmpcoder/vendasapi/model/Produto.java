@@ -23,11 +23,30 @@ public class Produto {
 	@Column(name = "descricao", length = 255)
 	private String descricao;
 	
-	@Column(name="preco", precision = 2, scale = 16)
+	@Column(name="preco", precision = 16, scale = 2)
 	private BigDecimal preco;
 	
 	@Column
 	private String sku;
+	
+	
+
+	public Produto() {
+		super();
+		
+	}
+	
+	
+
+	public Produto(String nome, String descricao, BigDecimal preco, String sku) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.preco = preco;
+		this.sku = sku;
+	}
+
+
 
 	public Long getId() {
 		return id;
