@@ -31,7 +31,7 @@ public class ProdutoController {
 	}
 	
 	// API/PRODUTO/1
-	@PutMapping
+	@PutMapping("{id}")
 	public ResponseEntity<Void> atualizar(@PathVariable Long id, @RequestBody ProdutosFormRequest produto) {
 		Optional<Produto> produtoExistente = repository.findById(id);
 		
