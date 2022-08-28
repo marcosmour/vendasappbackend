@@ -2,7 +2,6 @@ package com.mmpcoder.vendasapi.rest.produtos;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,17 @@ public class ProdutoController {
 		return repository.findAll().stream()
 				.map(ProdutosFormRequest::fromModel)
 				.collect(Collectors.toList()) ;
+	}
 	
+	@GetMapping("{id}")
+	public ResponseEntity<ProdutosFormRequest> getById(@PathVariable Long id) {
+		Optional<Produto> produtoExistente = repository.findById(id);
+		if(produtoExistente.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		var produto = produtoExistente.map(ProdutosFormRequest::fromModel).get();
+		return ResponseEntity.ok(produto);
 	}
 
 	@PostMapping
